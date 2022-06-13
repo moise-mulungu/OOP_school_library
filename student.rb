@@ -1,7 +1,7 @@
 require "./person.rb"
 
 class Student < Person
-    def initialize(name = "Unknown", age, parent_permission = true, classroom)
+    def initialize(name = "Unknown", age, parent_permission == true, classroom)
         super(name, age, parent_permission)
         @classroom = classroom
     end
@@ -12,3 +12,4 @@ class Student < Person
 end
 
 student = Student.new
+student.play_hooky()

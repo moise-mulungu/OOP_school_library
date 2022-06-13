@@ -1,7 +1,7 @@
 require "./person.rb"
 
 class Teacher < Person
-    def initialize(name = "Unknown", age, parent_permission = true, specialization)
+    def initialize(name = "Unknown", age, parent_permission == true, specialization)
         super(name, age, parent_permission)
         @specialization = specialization
     end
@@ -12,3 +12,4 @@ class Teacher < Person
 end
 
 teacher = Teacher.new
+teacher.can_use_services?()
