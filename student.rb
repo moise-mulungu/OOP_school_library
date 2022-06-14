@@ -1,15 +1,15 @@
-require "./person.rb"
+require './person'
 
 class Student < Person
-    def initialize(name = "Unknown", age, parent_permission == true, classroom)
-        super(name, age, parent_permission)
-        @classroom = classroom
-    end
+  def initialize(classroom)
+    super()
+    @classroom = classroom
+  end
 
-    def play_hooky
-        "¯\(ツ)/¯"
-    end
+  def play_hooky
+    "¯\(ツ)/¯"
+  end
 end
 
 student = Student.new
-student.play_hooky()
+student.play_hooky
