@@ -2,7 +2,7 @@
 
 # OOP_school_library
 
-> At this step of the project, I added three classes for the setup.
+> At this step of the project, I prepared decorators for my classes.
 
 
 ## Built With
@@ -14,7 +14,7 @@
 
 ## Getting Started
 
-**This is a setup project for a school librabry where I start implementing data within classes**
+**This is a second step of the Object Oriented Programming called School Library, where I start decorating its library**
 
 
 To get a local copy up and running follow these simple example steps.
