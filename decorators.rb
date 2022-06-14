@@ -1,3 +1,5 @@
+require "./nameable.rb"
+
 class Base_Decorator
     attr_accessor :nameable
 
