@@ -7,7 +7,19 @@ class Base_Decorator
         @nameable = nameable
     end
 
-    def correct_name?
+    def correct_name
         @nameable.correct_name?
+    end
+end
+
+class Capitalize_Decorator < Base_Decorator
+    def correct_name
+        @nameable.correct_name.upcase()
+    end
+end
+
+class Trimmer_Decorator < Base_Decorator
+    def correct_name
+        @nameable.correct_name.strip
     end
 end
