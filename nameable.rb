@@ -1,6 +1,6 @@
 class Nameable
-    attr_accessor :name
+    # attr_accessor :name
     def correct_name?
-        "NotImplementedError"
+        raise NotImplementedError
     end
 end
