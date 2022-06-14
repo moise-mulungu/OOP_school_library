@@ -1,25 +1,29 @@
-require "./nameable.rb"
+require './nameable'
 
-class Base_Decorator
-    attr_accessor :nameable
+# Prepare a base decorator class
+class BaseDecorator
+  attr_accessor :nameable
 
-    def initialize(nameable)
-        @nameable = nameable
-    end
+  def initialize(nameable)
+    super()
+    @nameable = nameable
+  end
 
-    def correct_name
-        @nameable.correct_name?
-    end
+  def correct_name
+    @nameable.correct_name
+  end
 end
 
-class Capitalize_Decorator < Base_Decorator
-    def correct_name
-        @nameable.correct_name.upcase()
-    end
+# Prepare a capitalize decorator class
+class CapitalizeDecorator < BaseDecorator
+  def correct_name
+    @nameable.correct_name.capitalize
+  end
 end
 
-class Trimmer_Decorator < Base_Decorator
-    def correct_name
-        @nameable.correct_name.strip
-    end
+# Prepare a trimmer decorator class
+class TrimmerDecorator < BaseDecorator
+  def correct_name
+    @nameable.correct_name.[0..10]
+  end
 end
