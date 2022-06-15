@@ -6,9 +6,10 @@ class Rental
     @date = date
 
     @book = book
-    book.rental << self
+    book.rental.push(self) unless book.rental.include?(self)
 
     @person = person
-    person.rental << self
+    person.rental.push(self) unless person.rental.include?(self)
   end
+
 end
