@@ -11,5 +11,4 @@ class Rental
     @person = person
     person.rental.push(self) unless person.rental.include?(self)
   end
-
 end
