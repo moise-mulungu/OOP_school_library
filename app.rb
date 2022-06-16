@@ -1,3 +1,11 @@
+require "./book.rb"
+require "./person.rb"
+require "./student.rb"
+require "./teacher.rb"
+require "./classroom.rb"
+require "./people.rb"
+require "./rental.rb"
+
 class App
     def initialize
         @books = Books.new
