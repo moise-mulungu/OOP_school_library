@@ -2,8 +2,7 @@
 
 # OOP_school_library
 
-> At this step of the project, I prepared decorators for my classes.
-
+> At this step of the project, I setup associations between classes.
 
 ## Built With
 
@@ -11,11 +10,9 @@
 - VSCode
 - Rubocop
 
-
 ## Getting Started
 
 **This is a second step of the Object Oriented Programming called School Library, where I start decorating its library**
-
 
 To get a local copy up and running follow these simple example steps.
 
@@ -30,7 +27,6 @@ To get a local copy up and running follow these simple example steps.
 ### Run tests
 
 ### Deployment
-
 
 
 ## Authors
