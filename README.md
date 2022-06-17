@@ -2,7 +2,7 @@
 
 # OOP_school_library
 
-> At this step of the project, I setup associations between classes.
+> At this final step of the project, I added some basic User Interface features.
 
 ## Built With
 
@@ -12,7 +12,7 @@
 
 ## Getting Started
 
-**This is a second step of the Object Oriented Programming called School Library, where I start decorating its library**
+**This is the last phase of completing my entire Application. I added some methods for listing, creating and selecting from a specific id**
 
 To get a local copy up and running follow these simple example steps.
 

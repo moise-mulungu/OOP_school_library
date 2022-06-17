@@ -3,12 +3,11 @@ require './decorator'
 require './capitalize'
 require './trimmer'
 
-class Person < Nameable
+class Person
   attr_accessor :name, :age
   attr_reader :id, :rental
 
-  def initialize(age, name = 'Unknown', parent_permission: true)
-    super()
+  def initialize(age, name = 'Unknown', parent_permission = true)
     @id = Random.new.rand(1..100)
     @name = name
     @age = age
