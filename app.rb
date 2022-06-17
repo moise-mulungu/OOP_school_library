@@ -28,9 +28,9 @@ class App
     action = show_menu
     case action
     when '1'
-      list_books
+      action_list_books
     when '2'
-      list_people
+      action_list_people
     when '3'
       create_person
     when '4'
@@ -41,7 +41,7 @@ class App
       list_rentals
     else
       puts 'Thanks for using the app.'
-      Exit
+      exit
     end
   end
 
@@ -77,14 +77,14 @@ class App
   end
 
   #   Asking for permission
-  def my_permission(my_char)
-    case my_char
-    when 'Y'
-      true
-    when 'N'
-      false
-    end
-  end
+  # def my_permission(my_char)
+  #   case my_char
+  #   when 'Y'
+  #     true
+  #   when 'N'
+  #     false
+  #   end
+  # end
 
   #   create a teacher
   def create_teacher
@@ -106,7 +106,13 @@ class App
     name = gets.chomp
     print 'Has parent permission? [Y/N]: '
     permission = gets.chomp
-    student = Student.new(age, name, my_permission(permission))
+    case permission
+    when 'Y'
+      true
+    when 'N'
+      false
+    end
+    student = Student.new(age, name, permission)
     @people.push(student)
   end
 
@@ -119,20 +125,9 @@ class App
       create_student
     when '2'
       create_teacher
-    else
-      puts 'Invalid choice. Please try again.'
-      create_person
     end
-
-    # case person_type
-    # when '1'
-    #   create_student
-    # when '2'
-    #   create_teacher
-    # end
-    # puts "Person created successfully\n"
-    # gets
-    # run
+    puts 'Person added successfully'
+    run_action
   end
 
   #   create a book
@@ -156,21 +151,21 @@ class App
     person_index = gets.chomp
     print "\n Date(yyyy/mm/dd): "
     rental_date = gets.chomp
-    new_rental = Rental.new(rental_date, @my_books[book_index.to_i], @people[person_index.to_i])
+    new_rental = Rental.new(rental_date, @books[book_index.to_i], @people[person_index.to_i])
     @rentals.push(new_rental)
     puts 'Rental added successfully'
     run_action
   end
 
   #   list all rentals for a given person id
-  def list_rental
+  def list_rentals
     peoples = nil
     print "\nID of person: "
     person_id = gets.chomp
     @people.each do |x|
       peoples = x if x.id == person_id.to_i
     end
-    peoples.rentals.each do |x|
+    peoples.rental.each do |x|
       puts x.date
     end
     puts
