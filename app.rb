@@ -24,79 +24,69 @@ class App
     gets.chomp
   end
 
-  def run(choice)
-    show_menu = ''
-    if choice == '1'
-      show_menu = list_books
-    elsif choice == '2'
-        show_menu = list_people
-    elsif choice == '3'
-        show_menu = create_person
-    elsif choice == '4'
-        show_menu = create_book
-    elsif choice == '5'
-        show_menu = create_rental
-    elsif choice == '6'
-        show_menu = list_rentals
-    elsif choice == '7'
-        show_menu = exit_app
+  def run_action
+    action = show_menu
+    case action
+    when '1'
+      list_books
+    when '2'
+      list_people
+    when '3'
+      create_person
+    when '4'
+      create_book
+    when '5'
+      create_rental
+    when '6'
+      list_rentals
     else
-        puts 'Invalid choice. Please try again.'
-        show_menu = show_menu
+      puts 'Thanks for using the app.'
+      Exit
     end
-    
   end
 
-#   CREATE METHODS FOR EACH ACTION
-# list all books
+  #   CREATE METHODS FOR EACH ACTION
+  # list all books
   def list_books
     @books.each_with_index do |a, index|
       puts "#{index}) Title: \"#{a.title}\", Author: #{a.author} "
     end
   end
 
-# list all people
+  # list all people
   def list_people
     @people.each_with_index do |a, index|
       puts "#{index}) [#{a.class.name}] Name: #{a.name}, ID: #{a.id}, Age: #{a.age}"
     end
   end
 
-#   All listed books
+  #   All listed books
   def action_list_books
     list_books
     puts 'Press enter to continue ...'
     gets.chomp
-    run
+    run_action
   end
 
-#   All listed_people
+  #   All listed_people
   def action_list_people
     list_people
     puts "\n\nPress any key to continue"
     gets
-    run
+    run_action
   end
 
-#   Asking for permission
+  #   Asking for permission
   def my_permission(my_char)
-    if my_char == 'Y'
-        true
-    elsif my_char == 'N'
-        false
-    else
-        puts 'Invalid choice. Please try again.'
-        my_permission(gets.chomp)
+    case my_char
+    when 'Y'
+      true
+    when 'N'
+      false
     end
-    # case my_char
-    # when 'N'
-    #   false
-    # when 'Y'
-    #   true
-    # end
   end
 
-#   create a teacher
+  #   create a teacher
   def create_teacher
     print 'Age: '
     age = gets.chomp
@@ -104,11 +94,11 @@ class App
     name = gets.chomp
     print 'Specialization: '
     specialization = gets.chomp
-    teacher = Teacher.new(age, name, nil, specialization)
+    teacher = Teacher.new(age, name, specialization)
     @people.push(teacher)
   end
 
-#   create a student
+  #   create a student
   def create_student
     print 'Age: '
     age = gets.chomp
@@ -116,21 +106,22 @@ class App
     name = gets.chomp
     print 'Has parent permission? [Y/N]: '
     permission = gets.chomp
-    student = Student.new(age, name, my_permission(permission), nil)
+    student = Student.new(age, name, my_permission(permission))
     @people.push(student)
   end
 
-#   create a person
+  #   create a person
   def create_person
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     person_type = gets.chomp
-    if person_type == '1'
-        create_student
-    elsif person_type == '2'
-        create_teacher
+    case person_type
+    when '1'
+      create_student
+    when '2'
+      create_teacher
     else
-        puts 'Invalid choice. Please try again.'
-        create_person
+      puts 'Invalid choice. Please try again.'
+      create_person
     end
 
     # case person_type
@@ -144,7 +135,7 @@ class App
     # run
   end
 
-#   create a book
+  #   create a book
   def create_book
     print 'Title: '
     title = gets.chomp
@@ -152,10 +143,10 @@ class App
     author = gets.chomp
     new_book = Book.new(title, author)
     @books.push(new_book)
-    run
+    run_action
   end
 
-#   create a rental
+  #   create a rental
   def create_rental
     puts "\nSelect a book from the following list by number"
     list_books
@@ -168,12 +159,12 @@ class App
     new_rental = Rental.new(rental_date, @my_books[book_index.to_i], @people[person_index.to_i])
     @rentals.push(new_rental)
     puts 'Rental added successfully'
-    run
+    run_action
   end
 
-#   list all rentals for a given person id
+  #   list all rentals for a given person id
   def list_rental
-    me = nil
+    peoples = nil
     print "\nID of person: "
     person_id = gets.chomp
     @people.each do |x|
@@ -183,6 +174,6 @@ class App
       puts x.date
     end
     puts
-    run
-end
+    run_action
+  end
 end

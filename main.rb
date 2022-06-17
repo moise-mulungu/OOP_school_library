@@ -1,10 +1,8 @@
-require_relative "./app"
-
-puts 'Welcome to the library!'
+require './app'
 
 def main
   app = App.new
-  app.run
+  app.run_action
 end
 
 main
